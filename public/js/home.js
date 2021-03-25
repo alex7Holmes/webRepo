@@ -30,21 +30,16 @@ const getComics = () => {
         document.querySelector('#comicTitle').innerHTML = comicTitle;
         // document.querySelector("#comics").innerHTML = baseImageUrl;
 
-        var title = document.createElement('DIV');
-        title.setAttribute("src", comicTitle);
-        document.body.appendChild(title);
-        var img = document.createElement('IMG');
+     
+        // document.body.appendChild(title);
+        var img = document.createElement('img');
         img.setAttribute("src", baseImageUrl);
-        document.body.appendChild(img);
+        var src = document.getElementById("image");
+        src.appendChild(img);
+        // document.body.appendChild(img);
     })
     .catch(err => console.log(err));
 }
-
-// const createComics = (comics) => {
-//     for (let comic of comics) {
-//         const img = document.createElement('IMG');
-//     }
-// }
 
 getComics();
 
