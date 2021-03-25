@@ -30,6 +30,6 @@ const getComics = () => {
     })
     .catch(err => console.log(err));
 }
-
+console.log("helloooooo");
 getComics();
 
