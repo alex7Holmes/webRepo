@@ -7,7 +7,7 @@ const app = express();
 
 
 
-app.use(express.static("public"));
+app.use("/public", express.static("./public/"));
 
 var HTTP_PORT = process.env.PORT || 8080;
 
@@ -16,7 +16,7 @@ function onHttpStart() {
 }
 
 app.get("/", function(req,res){
-    res.sendFile(path.join(__dirname, "/views/index.html"))
+    res.sendFile(path.join(__dirname, "/index.html"))
 });
 
 app.get('/about', (req, res) => {
