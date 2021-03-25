@@ -6,7 +6,7 @@ const path = require('path');
 const app = express();
 
 
-app.set("view engine", "ejs");
+
 app.use(express.static("public"));
 
 var HTTP_PORT = process.env.PORT || 8080;

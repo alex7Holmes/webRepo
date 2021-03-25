@@ -10,12 +10,14 @@
 // "title": "Epistemic Uncertainty",
 // "day": "22"
 
-import axios from 'axios';
+const { default: axios } = require("axios");
+
 
 
 var baseURL = "http://xkcd.com/info.0.json";
 var baseImageUrl = null;
 var configData = null;
+
 
 //function to get data from API
 const getComics = () => {
@@ -24,9 +26,9 @@ const getComics = () => {
         configData = response.data;
         baseImageUrl = response.data.img;
         const comicTitle = response.data.title;
-        console.log(allData);
-        console.log('COMICS', comicImage);
-        document.querySelector("#comics").innerHTML = comicImage;
+        // console.log(configData);
+        console.log('COMICS', baseImageUrl);
+        document.querySelector("#comics").innerHTML = baseImageUrl;
     })
     .catch(err => console.log(err));
 }
