@@ -11,24 +11,28 @@
 // "day": "22"
 
 
-var baseURL = "https://xkcd.com/info.0.json";
+var baseURL = "https://thawing-brook-02893.herokuapp.com/https://xkcd.com/info.0.json";
 var baseImageUrl = null;
 var configData = null;
 
 
 //function to get data from API
 const getComics = () => {
-    axios.get(baseURL)
-    .then(response => {
-        configData = response.data;
-        baseImageUrl = response.data.img;
-        const comicTitle = response.data.title;
-        console.log(configData);
+    fetch(baseURL)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        configData = data;
+        baseImageUrl = data.img;
+        const comicTitle = data.title;
+     
         // console.log('COMICS', baseImageUrl);
         document.querySelector('#comicTitle').innerHTML = comicTitle;
-        document.querySelector("#comics").innerHTML = baseImageUrl;
+        // document.querySelector("#comics").innerHTML = baseImageUrl;
 
-
+        var title = document.createElement('DIV');
+        title.setAttribute("src", comicTitle);
+        document.body.appendChild(title);
         var img = document.createElement('IMG');
         img.setAttribute("src", baseImageUrl);
         document.body.appendChild(img);
