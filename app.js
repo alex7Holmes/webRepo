@@ -4,12 +4,13 @@ const express = require('express');
 const axios = require('axios');
 const path = require('path');
 const app = express();
+var cors = require('cors');
 
-
+app.use(cors());
 
 app.use("/public", express.static("./public/"));
 
-var HTTP_PORT = process.env.PORT || 8080;
+var HTTP_PORT = process.env.PORT || 3000;
 
 function onHttpStart() {
     console.log("Express server listening on: " + HTTP_PORT);
