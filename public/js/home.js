@@ -11,7 +11,7 @@
 // "day": "22"
 
 
-var baseURL = "http://xkcd.com/info.0.json";
+var baseURL = "https://xkcd.com/info.0.json";
 var baseImageUrl = null;
 var configData = null;
 
