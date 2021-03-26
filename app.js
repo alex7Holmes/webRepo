@@ -15,14 +15,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/index.html"))
 });
 
-app.get("/comics", (req, res) => {
-    res.redirect('/comics');
-})
-
-app.get("/comics/:id", (req, res) => {
-    const { id } = req.params;
-})
-
 app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, "/views/about.html"))
 })
