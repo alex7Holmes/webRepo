@@ -42,13 +42,15 @@ h5 {
 #image {
     max-width: 100%;
     display: block;
+    height: auto;
   }
 
 #description {
     color:ivory;
-    text-align: center;
+    text-align: justify;
     line-height:24px;
     text-shadow:0 0 1px transparent;
+
 
 }
 
@@ -67,15 +69,12 @@ h5 {
     background: #4E9CAF;
     padding: 10px;
     text-align: center;
-    border-radius: 5px;
+    text-size-adjust: auto;
+    border-radius: 5px, 5px;
     color: white;
     font-weight: bold;
+    font-size: 100%;
     line-height: 25px;
-}
-
-.button :hover {
-    cursor: pointer;
-    background-color: blue;
 }
 
 .buttons {
@@ -111,7 +110,7 @@ h5 {
 }
 
 @media screen and (max-width: 768px) {
-    body:nth-child(3){
+    html:nth-child(3){
         max-width:80%;
     }
 }
