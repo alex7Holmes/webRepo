@@ -2,6 +2,10 @@ body {
     background: url(https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80);
     background-size: cover;
     background-position: center; 
+    box-sizing: border-box;
+    min-height: 100%;
+    padding-bottom: 80px;
+    overflow: hidden;
 }
 
 body,
@@ -24,6 +28,12 @@ h4 {
     text-align: center;
 }
 
+h5 {
+    font-size: 2em;
+    text-align: center;
+    font-family:monospace;
+}
+
 #comicTitle {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -31,15 +41,18 @@ h4 {
 #description {
     color:ivory;
     text-align: center;
+    line-height:24px;
+    text-shadow:0 0 1px transparent;
+
 }
 
-.content {
+/* .content {
 	padding-top: 25%;
 	text-align: center;
     text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
                  0px 8px 13px rgba(0,0,0,0.1),
                  0px 18px 23px rgba(0,0,0,0.1);
-}
+} */
 
 .center {
     display: block;
@@ -48,55 +61,63 @@ h4 {
     width: max-content;
   }
 
-/* .button {
-    text-decoration: inherit;
-    padding: 8px 16px;
-} */
+  .button {
+    cursor: pointer;
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
 
-.button:hover {
-    background-color: #ddd;
-    color: black;
+.button :hover {
+    cursor: pointer;
+    background-color: blue;
 }
 
 .buttons {
     display: flex;
     justify-content: center;
-    align-items: inherit;
+    align-items:stretch;
     height: 75px;
+    padding:10px;
 }
 
 #previous {
     background-color: #f1f1f1;
     color: black;
+    margin-right: 10px;
   }
   
 #next {
     background-color: rgb(211, 112, 12);
     color: white;
+    margin-left: 10px;
+    margin-right: 10px;
   }
-  
 
-li {
-    list-style-type: none;
+#comicDate {
+	font-size: 1em;
+    text-align: center;
+    font-family:monospace;
 }
 
 .text-center {
     text-align:right;
     margin: 10px;
 }
-/* 
-hr {
-    width: 400px;
-    border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-} */
 
-#navColor{
-    color: rgb(0, 100, 124);
+@media screen and (max-width: 1060px) {
+    #primary { width:67%; }
+    #secondary { width:30%; margin-left:3%;}  
 }
 
-@media screen and (max-width: 800px) {
-    .left, .main, .right {
-      width: 100%;
-    }
-  }
+@media screen and (max-width: 768px) {
+    #primary { width:100%; }
+    #secondary { width:100%; margin:0; border:none; }
+}

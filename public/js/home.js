@@ -12,13 +12,13 @@
 
 var baseURL = "https://thawing-brook-02893.herokuapp.com/https://xkcd.com/info.0.json";
 
-
 var latestComicUrl = "https://thawing-brook-02893.herokuapp.com/https://xkcd.com/info.0.json";
 var latestComicId = null;
 var currentComic = 0;
 
 var baseImageUrl = null;
 var configData = null;
+var transcriptData = null;
 var altData = null;
 var month = null;
 var year = null;
@@ -39,8 +39,7 @@ const getLatestComicId = () => {
         latestComicId = data.num;
     })
     .catch(err => console.log(err));
-}
-
+};
 
 //function to get data from API
 const getComics = () => {
@@ -49,8 +48,6 @@ const getComics = () => {
     if(comicId) {
         baseURL = "https://thawing-brook-02893.herokuapp.com/https://xkcd.com/" + comicId + "/info.0.json";
     };
-    console.log(latestComicId);
-
 
     fetch(baseURL)
     .then(response => response.json())
@@ -62,6 +59,10 @@ const getComics = () => {
         baseImageUrl = data.img;
         altData = data.alt; 
         currentComic = data.num;
+        transcriptData = data.transcript;
+        month = data.month;
+        day = data.day;
+        year = data.year;
 
         //get title
         const comicTitle = data.title;
@@ -71,52 +72,65 @@ const getComics = () => {
         img.setAttribute("src", baseImageUrl);
         var src = document.getElementById("image");
         src.appendChild(img);
-        //get alt
-        document.querySelector('#description').innerHTML = altData;
+
+        //get date
+        var comicDate = month + ' ' + day + ' ' + year;
+        document.querySelector('#comicDate').innerHTML = comicDate;
+        console.log(comicDate);
+        
+        //format and render description
+        document.querySelector('#description').innerHTML = transcriptData;
     })
     .catch(err => console.log(err));
-}
+};
 
+//next button functionality
 const nextComic = () => {
     document.getElementById("next").onclick = function() {
-        console.log("next clicked!");
 
-        let nextComicId = 1;
+    var nextComicId = 1;
 
-        if (comicId && comicId !== latestComicId ) {
-            nextComicId = comicId + 1;
-        }
-        // console.log(latestComicId);
-        // console.log(comicId);
-        // console.log(nextComicId);
+    if (comicId && comicId !== latestComicId ) {
+        nextComicId = comicId + 1;
+    }
         window.location.href = '?id=' + nextComicId;
     }
-}
+};
 
+//prev button functionality
 const prevComic = () => {
     document.getElementById("previous").onclick = function() {
-        console.log("next clicked!");
 
-        var prevComicId;
+    var prevComicId;
 
-        if (currentComic === 1) {
-            prevComicId = latestComicId;
-        } else {
-            prevComicId = currentComic - 1;
-        }
-
+    if (currentComic === 1) {
+        prevComicId = latestComicId;
+    } else {
+        prevComicId = currentComic - 1;
+    }
         window.location.href = '?id=' + prevComicId;
     }
 };
 
-const getDate = () => {
-    month = data.month;
-    year = data.year;
-    day = data.day;
-}
+//random button functionality
+const randomComic = () => {
+    document.getElementById("random").onclick = function() {
+        
 
+        var randomId = Math.floor(Math.random() * comicId.length);
+        console.log(randomId);
+        
+            if(randomId >= 1 && randomId <= 2441) {
+            randomId = comicId;
+            }
+            console.log(randomId);
 
+        window.location.href = '?id' + randomId; 
+    }
+};
 
+//function calls
 getComics();
 prevComic();
 nextComic();
+randomComic();
