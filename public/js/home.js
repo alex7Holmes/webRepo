@@ -28,7 +28,6 @@ var day = null;
 const urlParams = new URLSearchParams(window.location.search);
 const comicId = parseInt(urlParams.get('id'));
 
-
 //function to get data from API
 const getLatestComicId = () => {
     fetch(latestComicUrl)
@@ -72,10 +71,11 @@ const getComics = () => {
         img.setAttribute("src", baseImageUrl);
         var src = document.getElementById("image");
         src.appendChild(img);
+        //get and format date    
+        const comicDate = new Date(Date.UTC(year, month, day));
+        console.log(new Intl.DateTimeFormat('en-US', {dateStyle: 'long'}).format(comicDate));
 
-        //get date
-        var comicDate = month + ' ' + day + ' ' + year;
-        document.querySelector('#comicDate').innerHTML = comicDate;
+        document.querySelector('#comicDate').innerHTML = (new Intl.DateTimeFormat('en-US', {dateStyle: 'long'}).format(comicDate));;
         console.log(comicDate);
         
         //format and render description
@@ -115,17 +115,8 @@ const prevComic = () => {
 //random button functionality
 const randomComic = () => {
     document.getElementById("random").onclick = function() {
-        
-
-        var randomId = Math.floor(Math.random() * comicId.length);
-        console.log(randomId);
-        
-            if(randomId >= 1 && randomId <= 2441) {
-            randomId = comicId;
-            }
-            console.log(randomId);
-
-        window.location.href = '?id' + randomId; 
+    const randomId = Math.floor(Math.random() * latestComicId);
+    window.location.href = '?id=' + randomId; 
     }
 };
 

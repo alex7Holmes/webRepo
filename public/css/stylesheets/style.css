@@ -1,11 +1,13 @@
 body {
     background: url(https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80);
-    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    /* background-size: cover; */
     background-position: center; 
     box-sizing: border-box;
     min-height: 100%;
     padding-bottom: 80px;
-    overflow: hidden;
 }
 
 body,
@@ -38,6 +40,11 @@ h5 {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+#image {
+    max-width: 100%;
+    display: block;
+  }
+
 #description {
     color:ivory;
     text-align: center;
@@ -46,14 +53,6 @@ h5 {
 
 }
 
-/* .content {
-	padding-top: 25%;
-	text-align: center;
-    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-                 0px 8px 13px rgba(0,0,0,0.1),
-                 0px 18px 23px rgba(0,0,0,0.1);
-} */
-
 .center {
     display: block;
     margin-left: auto;
@@ -61,7 +60,7 @@ h5 {
     width: max-content;
   }
 
-  .button {
+.button {
     cursor: pointer;
     display: block;
     width: 115px;
@@ -112,12 +111,8 @@ h5 {
     margin: 10px;
 }
 
-@media screen and (max-width: 1060px) {
-    #primary { width:67%; }
-    #secondary { width:30%; margin-left:3%;}  
-}
-
 @media screen and (max-width: 768px) {
-    #primary { width:100%; }
-    #secondary { width:100%; margin:0; border:none; }
+    body:nth-child(3){
+        max-width:80%;
+    }
 }
